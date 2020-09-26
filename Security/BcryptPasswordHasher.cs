@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Text;
 namespace Edu.Security
 {
-    public class BcryptPasswordHasher : IPasswordHasher<User>
+    public class BcryptPasswordHasher<TUser> : IPasswordHasher<TUser> where TUser : class
     {
-        public string HashPassword(User user, string password)
+        public string HashPassword(TUser user, string password)
         {
             if (user == null)
             {
@@ -20,7 +20,7 @@ namespace Edu.Security
             return BCrypt.Net.BCrypt.HashPassword(password);
         }
 
-        public PasswordVerificationResult VerifyHashedPassword(User user, string hashedPassword, string providedPassword)
+        public PasswordVerificationResult VerifyHashedPassword(TUser user, string hashedPassword, string providedPassword)
         {
             if (user == null)
             {

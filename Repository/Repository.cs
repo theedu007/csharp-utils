@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Edu.Repository
 {
-    public class Repository<TEntity, TContext> : IRepository<TEntity>
+    public class Repository<TEntity, TContext> : IRepository<TEntity, TContext>
         where TEntity : class, IEntity
         where TContext : DbContext
     {
